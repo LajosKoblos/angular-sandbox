@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "latest",
+    "authService": "..\\contact-list-frontend-auth-service\\authService-0.0.1.tgz",
     "contactService": "..\\contact-list-frontend-contact-service\\contactService-0.0.1.tgz"
   }
 }
