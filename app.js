@@ -1,5 +1,5 @@
-require("authService");
 require("contactService");
+require("authService");
 
 angular.module("myapp", ["contactServiceModule", "authServiceModule"])
 
@@ -33,5 +33,4 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule"])
 
     var result = contactService.validateContact();
     console.log("validateContact: ", result);
-
 });
