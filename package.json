@@ -1,0 +1,17 @@
+{
+  "name": "angular-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify app.js -o bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "latest",
+    "contactService": "..\\contact-list-frontend-contact-service\\contactService-0.0.1.tgz"
+  }
+}
