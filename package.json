@@ -13,6 +13,7 @@
   "dependencies": {
     "angular": "latest",
     "contactService": "..\\contact-list-frontend-contact-service\\contactService-0.0.1.tgz",
-    "authService": "..\\contact-list-frontend-auth-service\\authService-1.0.1.tgz"
+    "authService": "..\\contact-list-frontend-auth-service\\authService-1.0.1.tgz",
+    "userService": "..\\contact-list-frontend-user-service\\userService-0.0.1.tgz"
   }
 }

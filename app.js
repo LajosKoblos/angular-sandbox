@@ -1,17 +1,67 @@
 require("contactService");
 require("authService");
+require("userService");
 
-angular.module("myapp", ["contactServiceModule", "authServiceModule"])
+angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServiceModule"])
 
-.controller("appCtrl", function($scope, $httpWithProtection, authService, contactService){
-    //contactService.write2Console();
-    
-    authService.login("Admin", "Alma1234").then(function(userData){
-        var http = $httpWithProtection({url: "http://localhost:8080/users", mehtod: "POST"});
-        http
-            .then(function(data){
-                console.log(data)});
+.controller("appCtrl", function($scope,
+                                $httpWithProtection,
+                                authService,
+                                contactService,
+                                userService){
+
+    //Admin login
+    var user = {userName: "Admin", password:"Alma12345"};
+    authService.login(user).then(function(userData){
+
+        //UserService
+
+        //createUser
+        var createUserModel = {
+            userName : "createdUser01",
+            password : "password01",
+            role : "ADMIN"
+        };
+        userService.createUser(createUserModel).then(function(result){
+            console.log(result);
+        });
+
+        //changePassword
+        var changePasswordModel = {
+            oldPassword: "Alma1234",
+            newPassword: "Alma12345"
+        };
+        userService.changeUserPassword(changePasswordModel).then(function(result){
+            console.log(result);
+        });
+
+        //setRole
+        var setRoleModel = {
+            userName: "createdUser01",
+            role: "USER"
+        };
+        //userService.setRole(setRoleModel).then(function(result){
+        //    console.log(result);
+        //});
+
+        //getUser
+        var userModel = {
+            userName: "createdUser01"
+        };
+        userService.getUser(userModel).then(function(result){
+            console.log(result.data);
+        });
+
+        //getUsers
+        userService.getUsers().then(function(result){
+            console.log(result.data);
+        });
+
+    }, function (reason) {
+        console.log(reason);
     });
+
+
 
     var result = contactService.getContact();
     console.log("getContact: ", result);
