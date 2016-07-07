@@ -1,17 +1,19 @@
-require("contactService");
 require("authService");
+require("contactService");
 require("userService");
+require("contactGroupService");
 
-angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServiceModule"])
+angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServiceModule", "contactGroupServiceModule"])
 
 .controller("appCtrl", function($scope,
                                 $httpWithProtection,
                                 authService,
                                 contactService,
-                                userService){
+                                userService,
+                                contactGroupService){
 
     //Admin login
-    var user = {userName: "Admin", password:"Alma12345"};
+    var user = {userName: "Admin", password:"Alma1234"};
     authService.login(user).then(function(userData){
 
         //UserService
@@ -57,8 +59,31 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
             console.log(result.data);
         });
 
+        //ContactGroupService
+
+        contactGroupService.listGroups().then(function(result) {
+            console.log("contactGroupService.listGroups: " + result);
+        }, function(reason) {
+            console.log("contactGroupService.listGroups FAILED: " + reason);
+        });
+
+        var group = {
+            "id": {
+                "userName":"Admin",
+                "contactGroupName":"name1"
+            },
+            "displayName":"displayName"
+        };
+
+        contactGroupService.createGroup(group).then(function(result) {
+            console.log("contactGroupService.createGroup: " + result.status);
+        }, function(reason) {
+            console.log("contactGroupService.createGroup FAILED: " + reason);
+        });
+
+
     }, function (reason) {
-        console.log(reason);
+        console.log("reason: " + reason);
     });
 
 
@@ -83,4 +108,5 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
 
     var result = contactService.validateContact();
     console.log("validateContact: ", result);
+
 });
