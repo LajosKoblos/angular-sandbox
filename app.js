@@ -80,34 +80,51 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
         }, function(reason) {
             console.log(reason);
         });
-        
-        
 
+        //ContactService
+
+        contactService.getContact().then(function(result){
+            console.log("getContact: ", result);
+        }, function (reason) {
+            console.log("getContact: ", reason);
+        });
+
+        contactService.getContactByExample().then(function (result) {
+            console.log("getContactByExample: ", result);
+        }, function (reason) {
+            console.log("getContactByExample: ", reason);
+        });
+
+        contactService.getContactsInGroup().then(function (result) {
+            console.log("getContactsInGroup: ", result);
+        }, function (reason) {
+            console.log("getContactsInGroup: ", reason);
+        });
+
+        contactService.addContactToGroup().then(function (result) {
+            console.log("addContactToGroup: ", result);
+        }, function (reason) {
+            console.log("addContactToGroup: ", reason);
+        });
+
+        contactService.updateContact().then(function (result) {
+            console.log("updateContact: ", result);
+        }, function (reason) {
+            console.log("updateContact: ", reason);
+        });
+
+        contactService.deleteContact().then(function (result) {
+            console.log("deleteContact: ", result);
+        }, function (reason) {
+            console.log("deleteContact: ", reason);
+        });
+
+        contactService.validateContact().then(function (result) {
+            console.log("validateContact: ", result);
+        }, function (reason) {
+            console.log("validateContact: ", reason);
+        });
     }, function (reason) {
         console.log(reason);
     });
-
-
-
-    var result = contactService.getContact();
-    console.log("getContact: ", result);
-
-    var result = contactService.getContactByExample();
-    console.log("getContactByExample: ", result);
-
-    var result = contactService.getContactsInGroup();
-    console.log("getContactsInGroup: ", result);
-
-    var result = contactService.addContactToGroup();
-    console.log("addContactToGroup: ", result);
-
-    var result = contactService.updateContact();
-    console.log("updateContact: ", result);
-
-    var result = contactService.deleteContact();
-    console.log("deleteContact: ", result);
-
-    var result = contactService.validateContact();
-    console.log("validateContact: ", result);
-
 });
