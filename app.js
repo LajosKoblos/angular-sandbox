@@ -64,7 +64,7 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
         contactGroupService.listGroups().then(function(result) {
             console.log("contactGroupService.listGroups: " + result);
         }, function(reason) {
-            console.log("contactGroupService.listGroups FAILED: " + reason);
+            console.log(reason);
         });
 
         var group = {
@@ -76,14 +76,15 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
         };
 
         contactGroupService.createGroup(group).then(function(result) {
-            console.log("contactGroupService.createGroup: " + result.status);
+            console.log(result.status);
         }, function(reason) {
-            console.log("contactGroupService.createGroup FAILED: " + reason);
+            console.log(reason);
         });
-
+        
+        
 
     }, function (reason) {
-        console.log("reason: " + reason);
+        console.log(reason);
     });
 
 
