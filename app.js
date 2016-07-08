@@ -16,6 +16,17 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
         var user = {userName: "Admin", password: "Alma1234"};
         authService.login(user).then(function (userData) {
 
+
+            var logoutModel =
+            {
+                "userName" : "Admin"
+            };
+            authService.logout(logoutModel).then(function (result) {
+                console.log(result);
+            }), function (reason) {
+                console.log(reason);
+            };
+
             //UserService
 
             //createUser
@@ -29,13 +40,13 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
             });
 
             //changePassword
-            var changePasswordModel = {
-                oldPassword: "Alma1234",
-                newPassword: "Alma12345"
-            };
-            userService.changeUserPassword(changePasswordModel).then(function (result) {
-                console.log(result);
-            });
+            //var changePasswordModel = {
+            //    oldPassword: "Alma1234",
+            //    newPassword: "Alma12345"
+            //};
+            //userService.changeUserPassword(changePasswordModel).then(function (result) {
+            //    console.log(result);
+            //});
 
             //setRole
             var setRoleModel = {
