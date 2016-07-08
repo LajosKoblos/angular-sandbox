@@ -12,11 +12,7 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
                                      userService,
                                      contactGroupService) {
 
-        //Admin login
-        var user = {userName: "Admin", password: "Alma1234"};
-        authService.login(user).then(function (userData) {
-
-
+        $scope.logout = function () {
             var logoutModel =
             {
                 "userName" : "Admin"
@@ -26,6 +22,11 @@ angular.module("myapp", ["contactServiceModule", "authServiceModule", "userServi
             }), function (reason) {
                 console.log(reason);
             };
+        };
+
+        //Admin login
+        var user = {userName: "Admin", password: "Alma1234"};
+        authService.login(user).then(function (userData) {
 
             //UserService
 
